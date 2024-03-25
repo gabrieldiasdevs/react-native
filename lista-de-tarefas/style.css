@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(18, 65, 97);
+    font-weight: bold;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div#app {
+    width: 50%;
+    height: 80%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.541);
+    text-align: center;
+}
+
+h1 {
+    margin-top: 50px;
+}
+
+input {
+    margin-top: 50px;
+}
+
+ul {
+    margin-top: 50px;
+}
+
+li {
+    margin-top: 10px;
+}
