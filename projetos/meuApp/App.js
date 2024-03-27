@@ -1,34 +1,53 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
 
 function App() {
+  const [nome, setNome] = useState('')
+  const [input, setInput] = useState('')
+
+  function entrar() {
+    
+    if(input === '') {
+      alert('Digite seu nome!')
+      return
+    }
+
+    setNome(input)
+    
+  }
+
 
   return(
-    <View style={styles.area}>
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder='Digite seu nome'
+        onChangeText={ (texto) => setInput(texto) }
+      />
 
-      <Text style={[styles.titulo, styles.textoAlinhado]}> Gabriel </Text>
-      <Text style={styles.titulo}> Dias </Text>
-      <Text style={[styles.subTitulo, styles.textoAlinhado]}> Amo minha namorada </Text>
+      <Button title='Entrar' onPress={ entrar }/>
 
+      <Text style={styles.texto}> {nome} </Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  area:{
-    marginTop: 50
+  container:{
+    flex: 1
   },
-  titulo:{
-    fontSize: 30,
-    color: 'red'
+  input:{
+    height: 45,
+    borderWidth: 1,
+    margin: 10,
+    marginTop: 30,
+    padding: 10,
+    fontSize: 20,
   },
-  subTitulo:{
-    color: '#00FF00',
-    fontSize: 17,
-    marginTop: 15
-  },
-  textoAlinhado:{
-    textAlign: 'center'
+  texto:{
+    textAlign: 'center',
+    fontSize: 25,
+    marginTop: 15,
   }
 })
 
