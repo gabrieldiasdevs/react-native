@@ -1,39 +1,35 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 function App() {
 
-  let nome = 'Malu minha princesa'
-  let img = 'https://sujeitoprogramador.com/reactlogo.png'
-
   return(
-    <View>
-      <Text>Olá Mundo!!!!</Text>
-      <Text style={{ color: '#FF0000', fontSize: 25, margin: 15 }}>
-        Meu primeiro App
-      </Text>
-      <Text style={{ fontSize: 30, color: 'green' }}>
-        Gabriel Dias
-      </Text>
+    <View style={styles.area}>
 
-      <Image 
-        source={{ uri: img }}
-        style={{ width: 300, height: 300 }}
-      />
-
-      <Text style={{ fontSize: 40, color: 'red' }}>
-        {nome}
-      </Text>
+      <Text style={[styles.titulo, styles.textoAlinhado]}> Gabriel </Text>
+      <Text style={styles.titulo}> Dias </Text>
+      <Text style={[styles.subTitulo, styles.textoAlinhado]}> Amo minha namorada </Text>
 
     </View>
   )
 }
 
+const styles = StyleSheet.create({
+  area:{
+    marginTop: 50
+  },
+  titulo:{
+    fontSize: 30,
+    color: 'red'
+  },
+  subTitulo:{
+    color: '#00FF00',
+    fontSize: 17,
+    marginTop: 15
+  },
+  textoAlinhado:{
+    textAlign: 'center'
+  }
+})
+
 export default App
-
-
-function Logo() {
-  return(
-    <Image source={ uri: img } />
-  )
-}
