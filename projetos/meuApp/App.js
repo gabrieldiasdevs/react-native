@@ -1,54 +1,27 @@
-import React, { useState } from 'react'
-import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
+import React from 'react'
+import { View, Text, Image, Button, StyleSheet } from 'react-native'
 
-function App() {
-  const [nome, setNome] = useState('')
-  const [input, setInput] = useState('')
-
-  function entrar() {
-    
-    if(input === '') {
-      alert('Digite seu nome!')
-      return
-    }
-
-    setNome(input)
-    
-  }
-
-
+export default function App() {
   return(
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder='Digite seu nome'
-        onChangeText={ (texto) => setInput(texto) }
-      />
 
-      <Button title='Entrar' onPress={ entrar }/>
+     <Image
+      style={styles.image}
+      source={'./assets/biscoito.png'}
+     />''
 
-      <Text style={styles.texto}> {nome} </Text>
+     <Button title='Quebrar Biscoito'/>
+
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container:{
-    flex: 1
+    flex: 1,
   },
-  input:{
-    height: 45,
-    borderWidth: 1,
-    margin: 10,
-    marginTop: 30,
-    padding: 10,
-    fontSize: 20,
-  },
-  texto:{
-    textAlign: 'center',
-    fontSize: 25,
-    marginTop: 15,
+  image:{
+    width: 400,
+    height: 400
   }
 })
-
-export default App
