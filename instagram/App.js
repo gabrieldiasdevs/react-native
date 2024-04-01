@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import React, { useState } from 'react'
+import { View, Text, StyleSheet, FlatList } from 'react-native'
 
-import Header from './src/Header';
-import List from './src/List';
+import Header from './src/Header'
+import List from './src/List'
 
 export default function App() {
   const [feed, setFeed] = useState([
@@ -66,7 +66,7 @@ export default function App() {
     />
 
   </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
