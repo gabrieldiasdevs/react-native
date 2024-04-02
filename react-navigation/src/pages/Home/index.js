@@ -15,6 +15,7 @@ export default function Home() {
    <View style={styles.container}>
     <Text>Tela Home</Text>
     <Button title='Ir para Detalhes' onPress={ navegaDetalhes } />
+    <Button title='Abrir Drawer' onPress={ () => navigation.openDrawer() } />
    </View>
   )
 }
