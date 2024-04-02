@@ -6,22 +6,21 @@ import StackRoutes from './stackRoutes'
 import Sobre from '../pages/Sobre'
 import Contato from '../pages/Contato'
 
+import CustomDrawer from '../components/CustomDrawer'
+
 const Drawer = createDrawerNavigator()
 
 export default function Routes() {
   return(
     <Drawer.Navigator
+    drawerContent={CustomDrawer}
     screenOptions={{
       headerShown: false,
 
-      drawerStyle:{
-        backgroundColor: '#121212'
-      },
-
-      drawerActiveBackgroundColor: '#3b3dbf',
+      drawerActiveBackgroundColor: '#00dae4',
       drawerActiveTintColor: '#fff',
 
-      drawerInactiveBackgroundColor: '#ccc',
+      drawerInactiveBackgroundColor: '#f1f1f1',
       drawerInactiveTintColor: '#000'
     }}
     >
