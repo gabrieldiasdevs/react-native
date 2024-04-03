@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ImageBackground, Button, Modal } from 'react-native';
 
+import Detalhes from '../components/detalhes';
+
 export default function Filmes({ data }){
 
   const [modalVisible, setModalVisible] = useState(false)
@@ -22,8 +24,8 @@ export default function Filmes({ data }){
         <Button title='LEIA MAIS' onPress={ abrirModal } />
       </ImageBackground>
 
-      <Modal transparent={false} animationType='slide' visible={modalVisible} >
-        <Button title='Voltar' onPress={ fecharModal } />
+      <Modal transparent={true} animationType='slide' visible={modalVisible} >
+        <Detalhes fechar={ fecharModal } data={data} />
       </Modal>
 
     </View>

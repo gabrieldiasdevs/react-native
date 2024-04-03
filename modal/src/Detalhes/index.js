@@ -5,10 +5,10 @@ export default function Detalhes(props) {
   return (
     <View style={styles.container}>
 
-			<View style={styles.modal}>
-				<Text style={styles.titulo}>Seja bem vindo!</Text>
-      	<Button title='FECHAR' onPress={ props.fechar } />
-			</View>
+		<View style={styles.modal}>
+			<Text style={styles.titulo}>Seja bem vindo!</Text>
+      		<Button title='FECHAR' onPress={ props.fechar } />
+		</View>
 
     </View>
   );
