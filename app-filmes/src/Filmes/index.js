@@ -27,7 +27,7 @@ export default function Filmes({ data }){
       </ImageBackground>
 
       <Modal transparent={true} animationType='slide' visible={modalVisible} >
-        <Detalhes fechar={ fecharModal } data={data} />
+        <Detalhes fechar={ fecharModal } filme={data} />
       </Modal>
 
     </View>

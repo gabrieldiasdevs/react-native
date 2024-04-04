@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 export default function Detalhes(props) {
   return (
@@ -11,9 +11,9 @@ export default function Detalhes(props) {
         </TouchableOpacity>
 
         <View style={styles.content}>
-          <Text style={styles.title}> {props.data.nome} </Text>
+          <Text style={styles.title}> {props.filme.nome} </Text>
           <Text style={styles.sinopse}> Sinopse: </Text>
-          <Text style={styles.textSinopse}> {props.data.sinopse} </Text>
+          <Text style={styles.textSinopse}> {props.filme.sinopse} </Text>
         </View>
 
       </View>
