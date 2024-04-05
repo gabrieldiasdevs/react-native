@@ -8,11 +8,6 @@ export default function App() {
   const inputRef = useRef(null)
   const [cepUser, setCepUser] = useState(null)
 
-  function limpar() {
-    setCep('')
-    inputRef.current.focus()
-  }
-
   async function buscar() {
 
     if(cep === '') {
@@ -25,6 +20,12 @@ export default function App() {
     setCepUser(response.data)
     Keyboard.dismiss()
 
+  }
+
+  function limpar() {
+    setCep('')
+    inputRef.current.focus()
+    setCepUser(null)
   }
 
   return (
