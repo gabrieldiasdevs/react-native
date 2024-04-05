@@ -1,7 +1,33 @@
-import React from 'react'
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Modal } from 'react-native';
+import React, { useState } from 'react'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Modal, Keyboard } from 'react-native'
+import Detalhes from './src/Detalhes';
 
 export default function App() {
+
+  const [modalVisible, setModalVisible] = useState(false)
+  const [valorAlc, setValorAlc] = useState('')
+  const [valorGas, setValorGas] = useState('')
+  const [combustivel, setCombustivel] = useState('')
+
+  function calcular() {
+    
+    const calculo = (valorAlc / valorGas)
+
+    if(calculo <= 0.7) {
+      setCombustivel('Álcool')
+    } else {
+      setCombustivel('Gasolina')
+    }
+
+    setModalVisible(true)
+  }
+
+  function novamente() {
+    setModalVisible(false)
+    setValorAlc('')
+    setValorGas('')
+  }
+
   return (
     <View style={styles.container}>
       <Image source={require('./assets/logo.png')} />
@@ -9,18 +35,29 @@ export default function App() {
       <View style={styles.inputArea}>
         <Text style={styles.inputText}>Álcool (preço por litro):</Text>
         <TextInput
+          keyboardType='numbers-and-punctuation'
           style={styles.input}
           placeholder='EX: 3.20'
+          value={valorAlc}
+          onChangeText={ (valor) => setValorAlc(valor) }
         />
+        
         <Text style={styles.inputText}>Gasolina (preço por litro):</Text>
         <TextInput
+          keyboardType='numbers-and-punctuation'
           style={styles.input}
           placeholder='EX: 5.20'
+          value={valorGas}
+          onChangeText={ (valor) => setValorGas(valor) }
         />
-        <TouchableOpacity style={styles.btnArea}>
+        <TouchableOpacity style={styles.btnArea} onPress={calcular} >
           <Text style={styles.btnText}>Calcular</Text>
         </TouchableOpacity>
-      </View>  
+      </View>
+
+      <Modal style={styles.modalContainer} animationType='slide' visible={modalVisible} >
+        <Detalhes fechar={novamente} combustivel={combustivel} alcool={valorAlc} gasolina={valorGas} />
+      </Modal>
     </View>
   );
 }
@@ -40,7 +77,7 @@ const styles = StyleSheet.create({
   },
   inputArea:{
     width: '90%',
-    marginTop: 50,
+    marginTop: 70,
   },
   inputText:{
     color: '#FFF',
@@ -66,5 +103,5 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontWeight: 'bold',
     fontSize: 20
-  }
+  },
 });
