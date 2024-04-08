@@ -1,54 +1,35 @@
-import React, { useRef, useEffect } from 'react'
-import { StyleSheet, Text, View, Animated } from 'react-native';
+import React, { useRef } from 'react'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import * as Animatable from 'react-native-animatable'
+
+const ButtonAnimated = Animatable.createAnimatableComponent(TouchableOpacity)
 
 export default function App() {
 
-  const larAnimada = useRef(new Animated.Value(0)).current
-  const altAnimada = useRef(new Animated.Value(50)).current
+  const buttonRef = useRef(null)
 
-  useEffect(() => {
-
-    Animated.sequence([
-      Animated.timing(larAnimada, {
-        toValue: 100,
-        duration: 2000,
-        useNativeDriver: false
-      }),
-      Animated.timing(altAnimada, {
-        toValue: 100,
-        duration: 2000,
-        useNativeDriver: false
-      })
-    ]).start( () => {
-      alert('TE AMO MEU AMOR')
-    } )
-
-  }, [])
-
-  let porcentagemLargura = larAnimada.interpolate({
-    inputRange: [0, 100],
-    outputRange: ['0%', '100%']
-  })
-
-  let porcentagemAltura = altAnimada.interpolate({
-    inputRange: [50, 100],
-    outputRange: ['5%', '100%']
-  })
+  function click() {
+    buttonRef.current.shake()
+  }
 
   return (
     <View style={styles.container}>
-      
-      <Animated.View style={{ 
-        width: porcentagemLargura, 
-        height: porcentagemAltura, 
-        backgroundColor: '#4169e1', 
-        justifyContent: 'center',
-        }}>
+      <Animatable.Text 
+        style={styles.title}
+        animation='bounce'
+        >
+        Gabriel Dias
+      </Animatable.Text>
 
-      </Animated.View>
-      
+      <ButtonAnimated 
+      style={styles.button} 
+      animation='pulse' 
+      ref={buttonRef} 
+      onPress={click} >
+        <Text style={{ color: '#FFF' }}>ANIMAR</Text>
+      </ButtonAnimated>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -57,4 +38,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+  title:{
+    fontSize: 25,
+  },
+  button:{
+    width: '70%',
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#121121',
+    marginTop: 25
+  }
+})

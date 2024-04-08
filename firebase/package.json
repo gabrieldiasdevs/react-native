@@ -1,5 +1,5 @@
 {
-  "name": "animacoes",
+  "name": "firebase",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -11,9 +11,9 @@
   "dependencies": {
     "expo": "~50.0.14",
     "expo-status-bar": "~1.11.1",
+    "firebase": "^10.10.0",
     "react": "18.2.0",
-    "react-native": "0.73.6",
-    "react-native-animatable": "^1.4.0"
+    "react-native": "0.73.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
