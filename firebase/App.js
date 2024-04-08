@@ -1,56 +1,72 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native'
 import { db } from './src/firebaseConnection'
 import { doc, getDoc, onSnapshot, setDoc, collection, addDoc } from 'firebase/firestore'
 
 export default function App() {
 
-  const [nome, setNome] = useState('Carregando...')
+  const [nome, setNome] = useState('')
+  const [idade, setIdade] = useState('')
+  const [cargo, setCargo] = useState('')
 
   useEffect(() => {
 
      async function getDados() {
 
-    //   const docRef = doc(db, 'users', '1')
-
-    //   getDoc(docRef)
-    //   .then((snapshot) => {
-    //     setNome(snapshot.data()?.nome)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //   })
-
-    onSnapshot(doc(db, 'users', '1'), (doc) => {
-      setNome(doc.data()?.nome)
-    })
+    // onSnapshot(doc(db, 'users', '1'), (doc) => {
+    //   setNome(doc.data()?.nome)
+    // })
   
   }
-
-    
 
     getDados()
 
   }, [])
 
   async function handleRegister() {
-    // await setDoc(doc(db, 'users', '3'), {
-    //   nome: 'Jose',
-    //   idade: '30',
-    //   cargo: 'Fullstack'
-    // })
 
     await addDoc(collection(db, 'users'), {
-      nome: 'Sabrina',
-      idade: '22',
-      cargo: 'Estudante'
+      nome: nome,
+      idade: idade,
+      cargo: cargo
+    })
+    .then(() => {
+      setNome('')
+      setIdade('')
+      setCargo('')
+    })
+    .catch((err) => {
+      console.log(err)
     })
 
   }
 
   return (
     <View style={styles.container}>
-      <Text>NOME: {nome}</Text>
+
+      <Text style={styles.label}>Nome: </Text>
+      <TextInput
+        style={styles.input}
+        placeholder='Digite seu nome...'
+        value={nome}
+        onChangeText={ (texto) => setNome(texto) }
+      />
+
+      <Text style={styles.label}>Idade: </Text>
+      <TextInput
+        style={styles.input}
+        placeholder='Digite sua idade...'
+        value={idade}
+        onChangeText={ (texto) => setIdade(texto) }
+      />
+
+      <Text style={styles.label}>Cargo: </Text>
+      <TextInput
+        style={styles.input}
+        placeholder='Digite o seu cargo...'
+        value={cargo}
+        onChangeText={ (texto) => setCargo(texto) }
+      />
 
       <TouchableOpacity style={styles.btn} onPress={handleRegister} >
         <Text style={styles.btnText}>ADICIONAR</Text>
@@ -66,10 +82,23 @@ const styles = StyleSheet.create({
   },
   btn:{
     backgroundColor: '#000',
-    alignSelf: 'flex-start',
+    marginHorizontal: 8,
   },
   btnText:{
     color: '#FFF',
     padding: 8,
+    textAlign: 'center',
   },
+  label:{
+    color: '#000',
+    fontSize: 18,
+    marginBottom: 4,
+    marginLeft: 8,
+  },
+  input:{
+    borderWidth: 1,
+    marginHorizontal: 8,
+    marginBottom: 8,
+    padding: 10,
+  }
 })
