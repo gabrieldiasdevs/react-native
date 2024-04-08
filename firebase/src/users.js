@@ -1,9 +1,16 @@
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { db } from './firebaseConnection'
+import { deleteDoc, doc } from 'firebase/firestore'
 
-export function UserList({ data }) {
+export function UserList({ data, handleEdit }) {
 
-  function handleDeleteItem() {
-    
+  async function handleDeleteItem() {
+    const docRef = doc(db, 'users', data.id)
+    await deleteDoc(docRef)
+  }
+
+  async function handleEditUser() {
+    handleEdit(data)
   }
 
   return(
@@ -11,9 +18,16 @@ export function UserList({ data }) {
       <Text style={styles.item}>Nome: {data.nome}</Text>
       <Text style={styles.item}>Idade: {data.idade}</Text>
       <Text style={styles.item}>Cargo: {data.cargo}</Text>
-      <TouchableOpacity style={styles.btn} onPress={handleDeleteItem} >
-        <Text style={styles.btnText}>Deletar Usuário</Text>
-      </TouchableOpacity>
+      
+      <View style={styles.btnArea}>
+        <TouchableOpacity style={styles.btn} onPress={handleDeleteItem} >
+          <Text style={styles.btnText}>Deletar Usuário</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[styles.btn, { backgroundColor: '#313131' }]} onPress={handleEditUser} >
+          <Text style={styles.btnText}>Editar Usuário</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -28,6 +42,10 @@ const styles = StyleSheet.create({
   item:{
     color: '#000',
     fontSize: 16,
+  },
+  btnArea:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   btn:{
     backgroundColor: '#b3261e',

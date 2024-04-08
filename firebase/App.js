@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native'
 import { db } from './src/firebaseConnection'
-import { doc, getDoc, onSnapshot, setDoc, collection, addDoc, getDocs } from 'firebase/firestore'
+import { doc, getDoc, onSnapshot, setDoc, collection, addDoc, getDocs, updateDoc } from 'firebase/firestore'
 
 import { UserList } from './src/users'
 
@@ -13,6 +13,7 @@ export default function App() {
   const [showForm, setShowForm] = useState(true)
 
   const [users, setUsers] = useState([])
+  const [isEditing, setIsEditing] = useState('')
 
   useEffect(() => {
 
@@ -64,6 +65,26 @@ export default function App() {
     setShowForm(!showForm)
   }
 
+  function editUser(data) {
+    setNome(data.nome)
+    setIdade(data.idade)
+    setCargo(data.cargo)
+    setIsEditing(data.id)
+  }
+
+  async function handleEditUser() {
+    const docRef = doc(db, 'users', isEditing)
+    await updateDoc(docRef, {
+      nome: nome,
+      idade: idade,
+      cargo: cargo
+    })
+    setIsEditing('')
+    setNome('')
+    setIdade('')
+    setCargo('')
+  }
+
   return (
     <View style={styles.container}>
       { showForm && (
@@ -92,9 +113,16 @@ export default function App() {
         onChangeText={ (texto) => setCargo(texto) }
       />
 
-      <TouchableOpacity style={styles.btn} onPress={handleRegister} >
-        <Text style={styles.btnText}>ADICIONAR</Text>
-      </TouchableOpacity>
+      {isEditing !== '' ? (
+        <TouchableOpacity style={styles.btn} onPress={handleEditUser} >
+          <Text style={styles.btnText}>Editar</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={styles.btn} onPress={handleRegister} >
+          <Text style={styles.btnText}>Adicionar</Text>
+        </TouchableOpacity>
+      )}
+
         </View>
       )}
 
@@ -113,7 +141,7 @@ export default function App() {
         style={styles.list}
         data={users}
         keyExtractor={ (item) => String(item.id) }
-        renderItem={ ({ item }) => <UserList data={item} /> }
+        renderItem={ ({ item }) => <UserList data={item} handleEdit={ (item) => editUser(item) } /> }
       />
 
 
