@@ -8,6 +8,7 @@ export default function App() {
   const [nome, setNome] = useState('')
   const [idade, setIdade] = useState('')
   const [cargo, setCargo] = useState('')
+  const [showForm, setShowForm] = useState(true)
 
   useEffect(() => {
 
@@ -41,10 +42,15 @@ export default function App() {
 
   }
 
+  function handleToggle() {
+    setShowForm(!showForm)
+  }
+
   return (
     <View style={styles.container}>
-
-      <Text style={styles.label}>Nome: </Text>
+      { showForm && (
+        <View>
+          <Text style={styles.label}>Nome: </Text>
       <TextInput
         style={styles.input}
         placeholder='Digite seu nome...'
@@ -71,6 +77,15 @@ export default function App() {
       <TouchableOpacity style={styles.btn} onPress={handleRegister} >
         <Text style={styles.btnText}>ADICIONAR</Text>
       </TouchableOpacity>
+        </View>
+      )}
+
+      <TouchableOpacity onPress={handleToggle} >
+        <Text style={{ textAlign:"center", color: "#000" }}>
+          {showForm ? "Esconder formulário" : "Mostrar formulário"}
+        </Text>
+      </TouchableOpacity>
+
     </View>
   )
 }
