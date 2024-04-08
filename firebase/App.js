@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native'
 import { db } from './src/firebaseConnection'
-import { doc, getDoc, onSnapshot, setDoc, collection, addDoc } from 'firebase/firestore'
+import { doc, getDoc, onSnapshot, setDoc, collection, addDoc, getDocs } from 'firebase/firestore'
+
+import { UserList } from './src/users'
 
 export default function App() {
 
@@ -10,14 +12,30 @@ export default function App() {
   const [cargo, setCargo] = useState('')
   const [showForm, setShowForm] = useState(true)
 
+  const [users, setUsers] = useState([])
+
   useEffect(() => {
 
-     async function getDados() {
+    async function getDados() {
 
-    // onSnapshot(doc(db, 'users', '1'), (doc) => {
-    //   setNome(doc.data()?.nome)
-    // })
-  
+    const usersRef = collection(db, 'users')
+
+    onSnapshot(usersRef, (snapshot) => {
+      let lista = []
+
+      snapshot.forEach((doc) => {
+        lista.push({
+          id: doc.id,
+          nome: doc.data().nome,
+          idade: doc.data().idade,
+          cargo: doc.data().cargo
+        })
+      })
+      
+      setUsers(lista)
+
+    })
+
   }
 
     getDados()
@@ -86,6 +104,19 @@ export default function App() {
         </Text>
       </TouchableOpacity>
 
+
+      <Text style={{ marginLeft: 8, marginTop: 14, fontSize: 20, color: '#000' }}>
+        Usuários
+      </Text>
+
+      <FlatList
+        style={styles.list}
+        data={users}
+        keyExtractor={ (item) => String(item.id) }
+        renderItem={ ({ item }) => <UserList data={item} /> }
+      />
+
+
     </View>
   )
 }
@@ -115,5 +146,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
     marginBottom: 8,
     padding: 10,
+  },
+  list:{
+    marginTop: 8,
+    marginHorizontal: 8,
   }
 })
