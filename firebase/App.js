@@ -62,7 +62,7 @@ export default function App() {
  return (
   <View style={styles.container}>
 
-    {loading && <Text>Carregando informações...</Text>}
+    {loading && <Text style={{ fontSize: 20, marginLeft: 8 }}>Carregando informações...</Text>}
 
     <Text style={{ marginLeft: 8, fontSize: 18, color: '#000' }}>Email: </Text>
     <TextInput
