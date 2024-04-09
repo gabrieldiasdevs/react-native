@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, FlatList } from 'react-native';
-import { db } from './firebaseConnection'
+import { db, auth } from './firebaseConnection'
 import { doc, getDoc, onSnapshot, setDoc, collection, addDoc, getDocs, updateDoc } from 'firebase/firestore'
 import { UsersList } from './users'
 
+import { signOut } from 'firebase/auth'
 
 export function FormUsers() {
   const [nome, setNome] = useState("")
@@ -36,31 +37,7 @@ export function FormUsers() {
 
     })
 
-
-    // getDocs(usersRef)
-    // .then((snapshot) => {
-    //   let lista = [];
-
-    //   snapshot.forEach((doc) => {
-    //     lista.push({
-    //       id: doc.id,
-    //       nome: doc.data().nome,
-    //       idade: doc.data().idade,
-    //       cargo: doc.data().cargo
-    //     })
-    //   })
-
-    //   setUsers(lista);
-
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // })
-
-
-
     }
-
 
     getDados();
 
@@ -110,6 +87,10 @@ export function FormUsers() {
     setIdade("")
     setIsEditing("");
 
+  }
+
+  async function handleLogout() {
+    await signOut(auth)
   }
 
  return (
@@ -170,6 +151,10 @@ export function FormUsers() {
       renderItem={ ({ item }) => <UsersList data={item} handleEdit={ (item) => editUser(item) } /> }
     />
 
+    <TouchableOpacity style={styles.buttonLogout} onPress={handleLogout} >
+      <Text style={{ color: '#FFF' }} >Sair da conta</Text>
+    </TouchableOpacity>
+
 
   </View>
   );
@@ -206,5 +191,12 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginLeft: 8,
     marginRight: 8,
+  },
+  buttonLogout:{
+    backgroundColor: '#FF1010',
+    alignSelf: 'flex-start',
+    margin: 14,
+    padding: 8,
+    borderRadius: 4,
   }
 })
