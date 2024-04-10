@@ -1,10 +1,49 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useContext } from 'react'
+import { Platform } from 'react-native'
+import { AuthContext } from '../../contexts/auth'
+
+import { 
+  Background, 
+  Container, 
+  AreaInput, 
+  Input, 
+  SubmitButton, 
+  SubmitText } 
+from '../SignIn/styles'
 
 export default function SignUp(){
+  const { user } = useContext(AuthContext)
+
   return(
-    <View>
-      <Text>TELA CADASTRO</Text>
-    </View>  
+    <Background>
+      <Container
+        behavior={Platform.OS === 'ios' ? 'padding' : ''}
+        enabled
+      >
+
+        <AreaInput>
+          <Input
+            placeholder='Nome'
+          />
+        </AreaInput>
+
+        <AreaInput>
+          <Input
+            placeholder='Seu email'
+          />
+        </AreaInput>
+
+        <AreaInput>
+          <Input
+            placeholder='Sua senha'
+          />
+        </AreaInput>
+
+        <SubmitButton>
+          <SubmitText>Cadastrar</SubmitText>
+        </SubmitButton>
+
+      </Container>
+    </Background>  
   )
 }
