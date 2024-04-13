@@ -1,10 +1,13 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useContext } from 'react'
+import { View, Text, Button } from 'react-native'
+import { AuthContext } from '../../contexts/auth'
+import { Background } from './styles'
+import Header from '../../components/Header'
 
 export default function Home(){
   return(
-    <View>
-      <Text>Tela HOME</Text>
-    </View>
+    <Background>
+      <Header title='Minhas movimentações' />
+    </Background>
   )
 }
