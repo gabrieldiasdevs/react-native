@@ -16,6 +16,12 @@ export default function Home(){
 
     async function getMovements(){
       let dateFormated = format(dateMovements, 'dd/mm/yyyy')
+
+      const balance = await api.get('/balance', {
+        params:{
+          date: dateFormated
+        }
+      })
     }
 
     getMovements()
