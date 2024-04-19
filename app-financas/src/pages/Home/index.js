@@ -16,6 +16,7 @@ import { useIsFocused } from '@react-navigation/native'
 import BalanceItem from '../../components/BalanceItem'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import HistoricoList from '../../components/HistoricoList'
+import CalendarModal from '../../components/CalendarModal'
 
 export default function Home(){
   const isFocused = useIsFocused()
@@ -98,7 +99,9 @@ export default function Home(){
       />
 
       <Modal visible={modalVisible} animationType='fade' transparent={true} >
-        
+        <CalendarModal
+          setVisible={ () => setModalVisible(false) }
+        />
       </Modal>
 
     </Background>
