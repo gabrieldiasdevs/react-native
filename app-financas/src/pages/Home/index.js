@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, Modal } from 'react-native'
 import { AuthContext } from '../../contexts/auth'
 import { 
   Background, 
@@ -21,6 +21,7 @@ export default function Home(){
   const isFocused = useIsFocused()
   const [listBalance, setListBalance] = useState([])
   const [movements, setMovements] = useState([])
+  const [modalVisible, setModalVisible] = useState(false)
 
   const [dateMovements, setDateMoviments] = useState(new Date())
 
@@ -82,7 +83,7 @@ export default function Home(){
       />
 
       <Area>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={ () => setModalVisible(true) } >
           <Icon name='event' color='#121212' size={30} />
         </TouchableOpacity>
         <Title>Últimas movimentações</Title>
@@ -95,6 +96,10 @@ export default function Home(){
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 20 }}
       />
+
+      <Modal visible={modalVisible} animationType='fade' transparent={true} >
+        
+      </Modal>
 
     </Background>
   )
