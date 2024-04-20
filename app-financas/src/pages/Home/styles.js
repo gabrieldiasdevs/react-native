@@ -17,7 +17,6 @@ export const Area = styled.View`
   flex-direction: row;
   padding-left: 14px;
   padding-right: 14px;
-  align-items: baseline;
   padding-top: 14px;
 `
 
@@ -25,6 +24,7 @@ export const Title = styled.Text`
   margin-left: 4px;
   color: #121212;
   margin-bottom: 14px;
+  padding-top: 6px;
   font-weight: bold;
   font-size: 18px;
 `

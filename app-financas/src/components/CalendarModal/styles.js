@@ -11,6 +11,8 @@ export const ButtonFilter = styled.TouchableOpacity`
   height: 45px;
   align-items: center;
   justify-content: center;
+  margin-bottom: 40px;
+  margin-top: 40px;
 `
 
 export const ButtonFilterText = styled.Text`

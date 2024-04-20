@@ -24,13 +24,16 @@ export default function Home(){
   const [movements, setMovements] = useState([])
   const [modalVisible, setModalVisible] = useState(false)
 
-  const [dateMovements, setDateMoviments] = useState(new Date())
+  const [dateMovements, setDateMovements] = useState(new Date())
 
   useEffect(() => {
     let isActive = true
 
     async function getMovements(){
-      let dateFormated = format(dateMovements, 'dd/MM/yyyy')
+
+      let date = new Date(dateMovements)
+      let onlyDate = date.valueOf() + date.getTimezoneOffset() * 60 * 1000
+      let dateFormated = format(onlyDate, 'dd/MM/yyyy')
 
       const receives = await api.get('/receives', {
         params:{
@@ -65,10 +68,14 @@ export default function Home(){
         }
       })
 
-      setDateMoviments(new Date())
+      setDateMovements(new Date())
     }catch(err){
       console.log(err)
     }
+  }
+
+  function filterDateMovements(dateSelected){
+    setDateMovements(dateSelected)
   }
 
   return(
@@ -85,7 +92,7 @@ export default function Home(){
 
       <Area>
         <TouchableOpacity onPress={ () => setModalVisible(true) } >
-          <Icon name='event' color='#121212' size={30} />
+          <Icon name='event' color='#121212' size={30} />   
         </TouchableOpacity>
         <Title>Últimas movimentações</Title>
       </Area>
@@ -101,6 +108,7 @@ export default function Home(){
       <Modal visible={modalVisible} animationType='fade' transparent={true} >
         <CalendarModal
           setVisible={ () => setModalVisible(false) }
+          handleFilter={filterDateMovements}
         />
       </Modal>
 
