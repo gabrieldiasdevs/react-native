@@ -51,11 +51,13 @@ export default function Home(){
         style={stlyes.cartButton} 
         onPress={ () => navigation.navigate("Cart")}
         >
-          <View style={stlyes.dot}>
-            <Text style={stlyes.dotText}>
-              {cart?.length}
-            </Text>
-          </View>
+          {cart.length >= 1 && (
+            <View style={stlyes.dot}>
+              <Text style={stlyes.dotText}>
+                {cart?.length}
+              </Text>
+            </View>
+          )}
           <Feather name="shopping-cart" size={30} color="#000" />
         </TouchableOpacity>
       </View>
