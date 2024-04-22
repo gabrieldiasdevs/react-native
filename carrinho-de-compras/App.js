@@ -1,10 +1,10 @@
 import React from 'react'
 
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
+
 import Home from './src/pages/Home'
 import Cart from './src/pages/Cart'
-
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
 
 const Stack = createStackNavigator()
 

@@ -1,14 +1,14 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-
+import { View, Text, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-const navigation = useNavigation()
-
 export default function Home(){
+  const navigation = useNavigation()
+
   return(
     <View>
-      <Text>INICIO</Text>
+      <Text>Home</Text>
+      <Button title='CARRINHO' onPress={ () => navigation.navigate('Carrinho') } />
     </View>
   )
 }
