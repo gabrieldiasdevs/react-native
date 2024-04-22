@@ -1,20 +1,27 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
 
+import Home from './src/pages/Home'
+import Cart from './src/pages/Cart'
 
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+
+const Stack = createStackNavigator()
 
 export default function App(){
   return(
-    <View style={style.container} >
-      <Text>TESTE</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name='Início'
+          component={Home}
+        />
+
+        <Stack.Screen
+          name='Carrinho'
+          component={Cart}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
-
-const style = StyleSheet.create({
-  container:{
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
