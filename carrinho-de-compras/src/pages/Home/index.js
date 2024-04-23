@@ -36,6 +36,11 @@ export default function Home(){
       name: "Guarana lata",
       price: 6.00
     },
+    {
+      id: '7',
+      name: "Bife de boi",
+      price: 48.00
+    },
   ])
 
   function handleAddCart(item){
@@ -106,5 +111,6 @@ const stlyes = StyleSheet.create({
   },
   dotText:{
     fontSize: 12,
+    color: '#FFF',
   }
 })
