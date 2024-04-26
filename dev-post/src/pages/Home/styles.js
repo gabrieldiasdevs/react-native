@@ -9,6 +9,6 @@ export const DotPost = styled.TouchableOpacity`
   justify-content: center;
   background-color: #222227;
   position: fixed;
-  top: 380px;
+  top: 460px;
   left: 80%;
 `

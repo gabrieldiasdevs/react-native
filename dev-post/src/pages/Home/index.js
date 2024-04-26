@@ -18,9 +18,10 @@ export default function Home(){
       <CustomHeader/>
     )}
     
-    <FlatList
-    
+    <List
+      
     />
+
 
     <DotPost onPress={ () => navigation.navigate('Novo Post') }>
       <Feather name='edit-2' size={25} color='#FFF' />
