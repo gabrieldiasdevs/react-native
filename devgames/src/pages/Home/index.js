@@ -3,6 +3,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
 import CategorysList from '../../components/CategorysList'
 import api from '../../services/api'
+import TopGamesList from '../../components/TopGamesList'
 
 import { 
   Container,
@@ -14,6 +15,7 @@ import {
   Input,
   AreaSearch,
   Categorys,
+  TopGamesText,
   TopGames
 } from './styles'
 
@@ -24,35 +26,36 @@ import { Button } from 'react-native'
 export default function Home(){
   const navigation = useNavigation()
 
-  const [teste, setTeste] = useState([])
-
-  const categorys = ([
+  const [categorys, setCategorys] = useState([])
+  const [games, setGames] = useState([
     {
-      category: 'All games'
+    game: 'Red Dead Redeption 2'
     },
     {
-      category: 'Arcade'
+    game: 'The Witcher 3'
     },
     {
-      category: 'Action'
+    game: 'Portal 2'
     },
     {
-      category: 'Sports'
-    },
-    {
-      category: 'Competitive'
+    game: 'GTA V'
     },
   ])
 
-  async function buscarGeneros(){
+  const getGeneres = async () => {
     try{
       const response = await api.get('/genres?key=b3b4091a91e64e7594837149f6e03037')
-      setTeste(response.data.results.name)
-      console.log(response.data.results.name)
+      const categorysResults = response.data.results
+
+      const categoryNames = categorysResults.map(category => category.name)
+      setCategorys(categoryNames)
+      
     }catch(error){
       console.log(error)
     }
   }
+
+  getGeneres()
 
   return(
     <Container>
@@ -65,8 +68,6 @@ export default function Home(){
           <Ionicons name='bookmark-outline' size={25} color='#FFF'/>
         </Favorites>
       </Header>
-
-      <Button title='buscar genres' onPress={buscarGeneros} />
 
       <InputArea>
         <Input
@@ -81,11 +82,16 @@ export default function Home(){
       <Categorys
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        data={teste}
+        data={categorys}
         renderItem={ ({ item }) => <CategorysList data={item}/> }
       />
       
-      <TopGames>Trending Games</TopGames>
+      <TopGamesText>Trending Games</TopGamesText>
+
+      <TopGames
+        data={games}
+        renderItem={ ({ item }) => <TopGamesList data={item}/> }
+      />
 
     </Container>
   )

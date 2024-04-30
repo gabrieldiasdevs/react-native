@@ -11,7 +11,7 @@ export const Header = styled.View`
   margin-top: 20px;
   flex-direction: row;
   justify-content: space-between;
-  width: 90%;
+  width: 95%;
   align-items: center;
 `
 
@@ -36,7 +36,7 @@ export const Favorites = styled.TouchableOpacity`
 
 export const InputArea = styled.View`
   flex-direction: row;
-  width: 90%;
+  width: 95%;
   align-items: center;
 `
 
@@ -56,11 +56,16 @@ export const Categorys = styled.FlatList`
   padding-left: 20px;
   margin-top: 7px;
   max-height: 34px;
+  background-color: #FF0000;
 `
 
-export const TopGames = styled.Text`
+export const TopGamesText = styled.Text`
   color: #FFF;
   font-size: 17px;
   font-weight: bold;
-  width: 90%;
+  width: 95%;
+`
+
+export const TopGames = styled.FlatList`
+  width: 95%;
 `

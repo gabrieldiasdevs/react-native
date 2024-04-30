@@ -18,7 +18,7 @@ const Title = styled.Text`
 export default function CategorysList({ data }){
   return(
     <Container>
-      <Title> {data.category} </Title>
+      <Title> {data} </Title>
     </Container>
   )
 }
