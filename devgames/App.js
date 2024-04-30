@@ -1,18 +1,13 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { StatusBar } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import Routes from './src/routes'
 
 export default function App(){
   return(
-    <View style={styles.container}>
-      <Text>Gabriel</Text>
-    </View>
+    <NavigationContainer>
+      <StatusBar barStyle='light-content' backgroundColor='#050B18' translucent={false} />
+      <Routes/>
+    </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container:{
-    flex: 1,
-    justifyContent: 'center',
-     alignItems: 'center',
-  }
-})
