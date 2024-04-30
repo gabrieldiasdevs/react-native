@@ -13,26 +13,46 @@ import {
   InputArea,
   Input,
   AreaSearch,
-  CategorysArea,
-  Categorys
+  Categorys,
+  TopGames
 } from './styles'
+
+
+import { Button } from 'react-native'
+
 
 export default function Home(){
   const navigation = useNavigation()
 
-  const [categorys, setCategorys] = useState([])
+  const [teste, setTeste] = useState([])
 
-  const categorysApi = async () => {
-    const response = await api.get('/genres?key=b3b4091a91e64e7594837149f6e03037')
-    .then((response) => {
-      setCategorys(response)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
+  const categorys = ([
+    {
+      category: 'All games'
+    },
+    {
+      category: 'Arcade'
+    },
+    {
+      category: 'Action'
+    },
+    {
+      category: 'Sports'
+    },
+    {
+      category: 'Competitive'
+    },
+  ])
+
+  async function buscarGeneros(){
+    try{
+      const response = await api.get('/genres?key=b3b4091a91e64e7594837149f6e03037')
+      setTeste(response.data.results.name)
+      console.log(response.data.results.name)
+    }catch(error){
+      console.log(error)
+    }
   }
-
-  
 
   return(
     <Container>
@@ -46,6 +66,8 @@ export default function Home(){
         </Favorites>
       </Header>
 
+      <Button title='buscar genres' onPress={buscarGeneros} />
+
       <InputArea>
         <Input
           placeholderTextColor='#FFF'
@@ -56,12 +78,14 @@ export default function Home(){
         </AreaSearch>
       </InputArea>
 
-      <CategorysArea>
-        <Categorys
-          data={categorys}
-          renderItem={ ({ item }) => <CategorysList data={item}/> }
-        />
-      </CategorysArea>
+      <Categorys
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        data={teste}
+        renderItem={ ({ item }) => <CategorysList data={item}/> }
+      />
+      
+      <TopGames>Trending Games</TopGames>
 
     </Container>
   )

@@ -47,16 +47,20 @@ export const Input = styled.TextInput`
   padding: 10px;
   border-radius: 30px;
   padding-left: 15px;
+  color: #FFF;
 `
 
-export const AreaSearch = styled.TouchableOpacity`
-
-`
-
-export const CategorysArea = styled.View`
-
-`
+export const AreaSearch = styled.TouchableOpacity``
 
 export const Categorys = styled.FlatList`
+  padding-left: 20px;
+  margin-top: 7px;
+  max-height: 34px;
+`
 
+export const TopGames = styled.Text`
+  color: #FFF;
+  font-size: 17px;
+  font-weight: bold;
+  width: 90%;
 `
