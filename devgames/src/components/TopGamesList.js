@@ -2,13 +2,17 @@ import React from 'react'
 import styled from 'styled-components/native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
+const Container = styled.View`
+  flex: 1;
+  opacity: 0.5;
+`
+
 const Background = styled.ImageBackground`
   justify-content: flex-end;
   padding: 10px;
   flex: 1;
-  height: 170px;
+  height: 180px;
   margin-bottom: 10px;
-  border-radius: 8px;
 `
 
 const InfoArea = styled.View`
@@ -31,17 +35,19 @@ const TitleStar = styled.Text`
 
 export default function TopGamesList({ data }){
   return(
+    <Container>
       <Background 
-        source={require('../assets/walppaper.png')}
+        source={{ uri: data.background }}
         resizeMode='cover'
       >
         <InfoArea>
-          <GameName> {data.game} </GameName>
+          <GameName> { data.nome } </GameName>
           <StarArea>
             <Ionicons name='star' size={15} color='#FABB1E' />
-            <TitleStar> 8.9/10 </TitleStar>
+            <TitleStar> { data.rate }/10 </TitleStar>
           </StarArea>
         </InfoArea>
       </Background>
+    </Container>
   )
 }

@@ -55,8 +55,7 @@ export const AreaSearch = styled.TouchableOpacity``
 export const Categorys = styled.FlatList`
   padding-left: 20px;
   margin-top: 7px;
-  max-height: 34px;
-  background-color: #FF0000;
+  max-height: 34px; 
 `
 
 export const TopGamesText = styled.Text`
