@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
-import CategorysList from '../../components/CategorysList'
-import TopGamesList from '../../components/TopGamesList'
+import CategorysList from '../../components/CategorysList/index'
+import TopGamesList from '../../components/TopGmesList/index'
 import { AppContext } from '../../contexts/context'
 
 import { 
@@ -21,7 +21,7 @@ import {
 } from './styles'
 
 export default function Home(){
-  const {categorys, loading, games} = useContext(AppContext)
+  const {categorys, loading, games, gameLoading, getMoreGames} = useContext(AppContext)
   const navigation = useNavigation()
 
   return (
@@ -58,12 +58,21 @@ export default function Home(){
           renderItem={({ item }) => <CategorysList data={item} />}
         />
   
-        <TopGamesText>Trending Games</TopGamesText>
-  
-        <TopGames
-          data={games}
-          renderItem={({ item }) => <TopGamesList data={item}/>}
-        />
+        {gameLoading ? (
+          <View style={{ backgroundColor: '#050B18', flex: 4 }}>
+            <ActivityIndicator size={30} color='#FFF' />
+          </View>
+        ) : (
+          <>
+            <TopGamesText>Trending Games</TopGamesText>
+            <TopGames
+              data={games}
+              renderItem={({ item }) => <TopGamesList data={item}/>}
+              //onEndReached={() => getMoreGames()}
+              //onEndReachedThreshold={0.1}
+            />
+          </>
+        )}
       </Container>
     )
 

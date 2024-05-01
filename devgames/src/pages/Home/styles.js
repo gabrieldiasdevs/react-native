@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   flex: 1;
   align-items: center;
   background-color: #050B18;
@@ -53,9 +53,9 @@ export const Input = styled.TextInput`
 export const AreaSearch = styled.TouchableOpacity``
 
 export const Categorys = styled.FlatList`
-  padding-left: 20px;
+  padding-left: 12px;
   margin-top: 7px;
-  max-height: 34px; 
+  height: 60px;
 `
 
 export const TopGamesText = styled.Text`
