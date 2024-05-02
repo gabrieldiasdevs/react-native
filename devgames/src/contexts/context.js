@@ -22,8 +22,14 @@ export default function AppProvider({ children }){
       const response = await api.get('/genres?key=b3b4091a91e64e7594837149f6e03037')
       const categorysResults = response.data.results
 
-      const categoryNames = categorysResults.map(category => category.name)
-      setCategorys(categoryNames)
+      const infoGenres = categorysResults.map((genre) => {
+        return {
+          id: genre.id,
+          nome: genre.name,
+        }
+      })
+
+      setCategorys(infoGenres)
       
     }catch(error){
       console.log(error)
@@ -40,11 +46,11 @@ export default function AppProvider({ children }){
 
       const gamesResults = response.data.results
 
-      const infoGames = gamesResults.map((link) => {
+      const infoGames = gamesResults.map((game) => {
         return {
-          nome: link.name,
-          background: link.background_image,
-          rate: link.rating,
+          nome: game.name,
+          background: game.background_image,
+          rate: game.rating,
         }
       })
 

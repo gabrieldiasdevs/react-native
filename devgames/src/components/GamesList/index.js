@@ -26,7 +26,7 @@ export default function TopGamesList({ data }){
           <GameName> { data.nome } </GameName>
           <StarArea>
             <Ionicons name='star' size={15} color='#FABB1E' />
-            <TitleStar> { (data.rate).toFixed(1) }/10 </TitleStar>
+            <TitleStar> { (data.rate) }/10 </TitleStar>
           </StarArea>
         </InfoArea>
       </Background>

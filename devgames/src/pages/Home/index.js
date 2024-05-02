@@ -3,7 +3,7 @@ import { View, ActivityIndicator } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
 import CategorysList from '../../components/CategorysList/index'
-import TopGamesList from '../../components/TopGmesList/index'
+import GamesList from '../../components/GamesList/index'
 import { AppContext } from '../../contexts/context'
 
 import { 
@@ -67,9 +67,7 @@ export default function Home(){
             <TopGamesText>Trending Games</TopGamesText>
             <TopGames
               data={games}
-              renderItem={({ item }) => <TopGamesList data={item}/>}
-              //onEndReached={() => getMoreGames()}
-              //onEndReachedThreshold={0.1}
+              renderItem={({ item }) => <GamesList data={item}/>}
             />
           </>
         )}
