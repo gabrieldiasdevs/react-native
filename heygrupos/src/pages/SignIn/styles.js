@@ -7,7 +7,7 @@ export const Container = styled.SafeAreaView`
 `
 
 export const Title = styled.Text`
-  margin-top: 60px;
+  margin-top: ${props => props.mt}px;
   font-size: 28px;
   font-weight: bold;
   color: #000;
@@ -15,7 +15,7 @@ export const Title = styled.Text`
 
 export const Description = styled.Text`
   color: #000;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 `
 
 export const Input = styled.TextInput`
@@ -31,13 +31,13 @@ export const Input = styled.TextInput`
 
 export const ButtonArea = styled.TouchableOpacity`
   width: 90%;
-  background-color: #121212;
+  background-color: ${props => props.bg};
   height: 50px;
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
   border-radius: 6px;
-`
+`;
 
 export const ButtonText = styled.Text`
   color: #FFF;

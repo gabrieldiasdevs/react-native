@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text } from 'react-native'
+import { Platform } from 'react-native'
 
 import { 
   Container,
@@ -17,17 +17,21 @@ export default function SignIn(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const [type, setType] = useState(true)
+
   return(
     <Container>
-      <Title>HeyGrupos</Title>
+      <Title mt={ Platform.OS === 'android' ? 55 : 80 }>HeyGrupos</Title>
       <Description>Ajude, colabore, faça networking!</Description>
 
-      <Input
-        value={name}
-        onChangeText={ (text) => setName(text) }
-        placeholder='Qual seu nome?'
-        placeholderTextColor='#99999B'
-      />
+      { type && (
+        <Input
+          value={name}
+          onChangeText={ (text) => setName(text) }
+          placeholder='Qual seu nome?'
+          placeholderTextColor='#99999B'
+        />
+      )}
 
       <Input
         value={email}
@@ -43,12 +47,12 @@ export default function SignIn(){
         placeholderTextColor='#99999B'
       />
 
-      <ButtonArea>
-        <ButtonText>Acessar</ButtonText>
+      <ButtonArea bg={ type ? "#F53745" : '#57DD86' }>
+        <ButtonText> {type ? 'Cadastrar' : 'Acessar'} </ButtonText>
       </ButtonArea>
 
-      <LinkArea>
-        <LinkText>Criar uma conta</LinkText>
+      <LinkArea onPress={ () => setType(!type) }>
+        <LinkText> {type ? 'Já possuo uma conta' : 'Criar uma nova conta'} </LinkText>
       </LinkArea>
     </Container>
   )
