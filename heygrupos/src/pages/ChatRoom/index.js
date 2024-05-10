@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import auth from '@react-native-firebase/auth'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import FabButton from '../../components/FabButton'
+import ModalNewRoom from '../../components/ModalNewRoom'
 
 import {
   Container,
@@ -10,7 +11,8 @@ import {
   AreaHeaderLeft,
   AreaHeaderRight,
   Button,
-  Title
+  Title,
+  Modal
 } from './styles'
 
 export default function ChatRoom(){
@@ -45,6 +47,10 @@ export default function ChatRoom(){
       </AreaHeader>
 
       <FabButton setVisible={ () => setModalVisible(true) } />
+
+      <Modal visible={modalVisible} animationType='fade' transparent={true}>
+        <ModalNewRoom setVisible={ () => setModalVisible(false) }/>
+      </Modal>
     </Container>
   )
 }

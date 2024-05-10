@@ -31,3 +31,7 @@ export const Title = styled.Text`
   color: #FFF;
   padding-left: 10px;
 `
+
+export const Modal = styled.Modal`
+  
+`
