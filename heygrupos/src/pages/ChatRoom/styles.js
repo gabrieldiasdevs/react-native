@@ -21,14 +21,13 @@ export const AreaHeaderLeft = styled.View`
   align-items: center;
 `
 
-export const AreaHeaderRight = styled.TouchableOpacity`
+export const AreaHeaderRight = styled.TouchableOpacity``
 
-`
-
-export const Button = styled.TouchableOpacity`
-
-`
+export const Button = styled.TouchableOpacity``
 
 export const Title = styled.Text`
-
+  font-size: 26px;
+  font-weight: bold;
+  color: #FFF;
+  padding-left: 10px;
 `
