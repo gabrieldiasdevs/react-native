@@ -1,14 +1,16 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 import {
   Container,
   Text
 } from './styles'
 
-export default function FabButton({ setVisible }){
+export default function FabButton({ setVisible, userStatus }){
+  const navigation = useNavigation()
 
   function handleNavigateButton(){
-    setVisible()
+    userStatus ? setVisible() : navigation.navigate('SignIn')
   }
 
   return(

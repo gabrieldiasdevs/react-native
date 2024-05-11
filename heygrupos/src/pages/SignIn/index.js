@@ -19,7 +19,7 @@ export default function SignIn(){
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [type, setType] = useState(true)
+  const [type, setType] = useState(false)
 
   function handleLogin(){
     if(type){
