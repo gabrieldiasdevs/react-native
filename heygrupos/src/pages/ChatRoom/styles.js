@@ -2,6 +2,7 @@ import styled from 'styled-components/native'
 
 export const Container = styled.SafeAreaView`
   flex: 1;
+  background-color: #FFF;
 `
 
 export const AreaHeader = styled.View`
@@ -32,6 +33,8 @@ export const Title = styled.Text`
   padding-left: 10px;
 `
 
-export const Modal = styled.Modal`
-  
+export const Modal = styled.Modal``
+
+export const RoomList = styled.FlatList`
+
 `

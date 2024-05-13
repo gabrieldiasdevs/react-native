@@ -6,6 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import FabButton from '../../components/FabButton'
 import ModalNewRoom from '../../components/ModalNewRoom'
 import firestore from '@react-native-firebase/firestore'
+import ChatList from '../../components/ChatList'
 
 import {
   Container,
@@ -14,7 +15,8 @@ import {
   AreaHeaderRight,
   Button,
   Title,
-  Modal
+  Modal,
+  RoomList
 } from './styles'
 
 export default function ChatRoom(){
@@ -88,7 +90,6 @@ export default function ChatRoom(){
   return(
     <Container>
       <AreaHeader>
-
         <AreaHeaderLeft>
 
           { user && (
@@ -103,8 +104,14 @@ export default function ChatRoom(){
         <AreaHeaderRight>
           <MaterialIcons name='search' size={28} color='#FFF'/>
         </AreaHeaderRight>
-
       </AreaHeader>
+
+      <RoomList
+        data={threads}
+        renderItem={ ({ item }) => <ChatList data={item} /> }
+        keyExtractor={ item => item._id }
+        showsVerticalScrollIndicator={false}
+      />
 
       <FabButton setVisible={ () => setModalVisible(true) } userStatus={user} />
 
