@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { ActivityIndicator } from 'react-native'
 import { useNavigation, useIsFocused } from '@react-navigation/native'
 import auth from '@react-native-firebase/auth'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import FabButton from '../../components/FabButton'
 import ModalNewRoom from '../../components/ModalNewRoom'
+import firestore from '@react-native-firebase/firestore'
 
 import {
   Container,
@@ -20,10 +22,48 @@ export default function ChatRoom(){
   const isFocused = useIsFocused()
   const [modalVisible, setModalVisible] = useState(false)
   const [user, setUser] = useState(null)
+  const [threads, setThreads] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const hasUser = auth().currentUser ? auth().currentUser.toJSON() : null
     setUser(hasUser)
+  }, [isFocused])
+
+  useEffect(() => {
+    
+    let isActive = true
+
+    function getChats(){
+      firestore().collection('MESSAGE_THREADS')
+      .orderBy('lastMessage.createdAt', 'desc')
+      .limit(10).get()
+
+      .then((snapshot) => {
+        const threads = snapshot.docs.map( documentSnapshot => {
+          return{
+            _id: documentSnapshot.id,
+            name: '',
+            lastMessage: { text: '' },
+            ...documentSnapshot.data()
+          }
+        })
+
+        if(isActive){
+          setThreads(threads)
+          setLoading(false)
+        }
+        
+      })
+
+    }
+
+    getChats()
+
+    return () => {
+      isActive = false
+    }
+
   }, [isFocused])
 
   function handleSignOut(){
@@ -36,6 +76,14 @@ export default function ChatRoom(){
       console.log(error)
     })
   }
+
+
+  if(loading){
+    return(
+      <ActivityIndicator size='large' color='#555'/>
+    )
+  }
+
 
   return(
     <Container>
