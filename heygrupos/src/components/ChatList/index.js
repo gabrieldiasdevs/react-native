@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 import {
   Container,
@@ -6,9 +7,21 @@ import {
   Message
 } from './styles'
 
-export default function ChatList({ data, deleteRoom }){
+
+export default function ChatList({ data, deleteRoom, userStatus }){
+  const navigation = useNavigation()
+
+  function openChat(){
+    if(userStatus){
+      navigation.navigate('Messages', { thread: data })
+    }else{
+      navigation.navigate('SignIn')
+    }
+    
+  }
+
   return(
-    <Container onLongPress={ () => deleteRoom && deleteRoom() }>
+    <Container onPress={openChat} onLongPress={ () => deleteRoom && deleteRoom() }>
       <Title numberOfLines={1}> {data.name} </Title>
       <Message numberOfLines={1}> {data.lastMessage.text} </Message>
     </Container>
