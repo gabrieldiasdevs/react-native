@@ -66,7 +66,7 @@ export default function ChatRoom(){
       isActive = false
     }
 
-  }, [isFocused])
+  }, [isFocused, modalVisible])
 
   function handleSignOut(){
     auth().signOut()
