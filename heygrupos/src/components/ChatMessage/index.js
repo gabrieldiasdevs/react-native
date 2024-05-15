@@ -18,7 +18,9 @@ export default function ChatMessage({ data }){
   return(
     <Container>
       <MessageBox bg={isMyMessage ? '#DCF8C5' : '#FFF'} ml={isMyMessage ? 50 : 0} mr={isMyMessage ? 0 : 50} >
-        <Name>Gabriel Dias</Name>
+
+        {!isMyMessage && <Name> {data?.user?.displayName} </Name> }
+
         <Message> {data.text} </Message>
       </MessageBox>
     </Container>

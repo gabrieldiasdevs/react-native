@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react'
+import { Platform } from 'react-native'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
 import ChatMessage from '../../components/ChatMessage'
+import Feather from 'react-native-vector-icons/Feather'
 
 import {
   Container,
-  MessageList
+  MessageList,
+  KeyboardArea,
+  ContainerInput,
+  InputArea,
+  Input,
+  ButtonArea,
+  Button
 } from './styles'
 
 export default function Messages({ route }){
   const { thread } = route.params
   const [messages, setMessages] = useState([])
+  const [input, setInput] = useState('')
 
   const user = auth().currentUser.toJSON()
 
@@ -55,6 +64,33 @@ export default function Messages({ route }){
         keyExtractor={ item => item._id }
         renderItem={ ({ item }) => <ChatMessage data={item} /> }
       />
+
+      <KeyboardArea
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={100}
+      >
+
+        <ContainerInput>
+
+          <InputArea>
+            <Input
+              placeholder='Digite sua mensagem ...'
+              value={input}
+              onChangeText={ (text) => setInput(text) }
+              multiline={true}
+              autoCorrect={false}
+            />
+          </InputArea>
+
+          <ButtonArea>
+            <Button>
+              <Feather name='send' size={22} color='#FFF'/>
+            </Button>
+          </ButtonArea>
+
+        </ContainerInput>
+      </KeyboardArea>
+
     </Container>
   )
 }

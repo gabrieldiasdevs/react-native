@@ -14,9 +14,11 @@ export const MessageBox = styled.View`
 `
 
 export const Name = styled.Text`
-
+  color: #F53745;
+  font-weight: bold;
+  margin-bottom: 5px;
 `
 
 export const Message = styled.Text`
-
+  color: #000;
 `
