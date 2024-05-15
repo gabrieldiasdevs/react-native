@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
+import ChatMessage from '../../components/ChatMessage'
 
 import {
-  Container
+  Container,
+  MessageList
 } from './styles'
 
 export default function Messages({ route }){
@@ -48,7 +50,11 @@ export default function Messages({ route }){
 
   return(
     <Container>
-
+      <MessageList
+        data={messages}
+        keyExtractor={ item => item._id }
+        renderItem={ ({ item }) => <ChatMessage data={item} /> }
+      />
     </Container>
   )
 }
