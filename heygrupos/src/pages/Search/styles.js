@@ -30,3 +30,5 @@ export const Button = styled.TouchableOpacity`
   margin-left: 5px;
   margin-right: 10px;
 `
+
+export const RoomList = styled.FlatList``

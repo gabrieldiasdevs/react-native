@@ -4,13 +4,16 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
 import { useIsFocused } from '@react-navigation/native'
+import ChatList from '../../components/ChatList'
 
 import {
   Container,
   ContainerInput,
   Input,
-  Button
+  Button,
+  RoomList
 } from './styles'
+
 
 export default function Search(){
   const isFocused = useIsFocused()
@@ -20,7 +23,7 @@ export default function Search(){
 
   useEffect(() => {
 
-    const hasUser = auth().currentUse ? auth().currentUser.toJSON() : null
+    const hasUser = auth().currentUser ? auth().currentUser.toJSON() : null
     setUser(hasUser)
 
   }, [isFocused])
@@ -45,7 +48,6 @@ export default function Search(){
       })
 
       setChats(threads)
-      console.log(threads)
       setInput('')
       Keyboard.dismiss()
 
@@ -66,6 +68,13 @@ export default function Search(){
           <MaterialIcons name='search' size={30} color='#FFF'/>
         </Button>
       </ContainerInput>
+
+      <RoomList
+        data={chats}
+        keyExtractor={ item => item._id }
+        renderItem={ ({ item }) => <ChatList data={item} userStatus={user} /> }
+        showsVerticalScrollIndicator={false}
+      />
     </Container>
   )
 }
