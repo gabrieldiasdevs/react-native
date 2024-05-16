@@ -126,7 +126,7 @@ export default function ChatRoom(){
           <Title> Grupos </Title>
         </AreaHeaderLeft>
 
-        <AreaHeaderRight>
+        <AreaHeaderRight onPress={ () => navigation.navigate('Search') }>
           <MaterialIcons name='search' size={28} color='#FFF'/>
         </AreaHeaderRight>
       </AreaHeader>
