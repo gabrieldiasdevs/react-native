@@ -1,8 +1,7 @@
 import styled from 'styled-components/native'
 
 export const Container = styled.View`
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 10px;
 `
 
 export const MessageBox = styled.View`
