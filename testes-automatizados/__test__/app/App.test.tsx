@@ -8,6 +8,8 @@ it('Test exemplo', () => {
   const soma = num1 + num2
 
   expect(soma).toBe(30)
+  expect(soma).toBeGreaterThan(20)
+  expect(soma).toBeLessThan(50)
 
 })
 
@@ -27,7 +29,18 @@ describe('App Component Test', () => {
 
     const counterText = getByTestId('counter')
 
-    expect(counterText.props.children).toBe('')
+    expect(counterText.props.children).toBe(1)
+  })
+
+  it('should decrease counter on clicking button', () => {
+    const { getByText, getByTestId } = render(<App/>)
+
+    const button = getByText('-')
+    fireEvent.press(button)
+
+    const counterText = getByTestId('counter')
+
+    expect(counterText.props.children).toBe(-1)
   })
 
 })
