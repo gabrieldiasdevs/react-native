@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1717465277372" clover="3.2.0">
+  <project timestamp="1717465277372" name="All files">
+    <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0" elements="3" coveredelements="0" complexity="0" loc="2" ncloc="2" packages="1" files="1" classes="1"/>
+    <file name="App.tsx" path="C:\Users\gabri\Documents\react-native\testes-automatizados\App.tsx">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="4" count="0" type="stmt"/>
+      <line num="11" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>

@@ -1,0 +1,2 @@
+{"C:\\Users\\gabri\\Documents\\react-native\\testes-automatizados\\App.tsx": {"path":"C:\\Users\\gabri\\Documents\\react-native\\testes-automatizados\\App.tsx","statementMap":{"0":{"start":{"line":4,"column":2},"end":{"line":8,"column":3}},"1":{"start":{"line":11,"column":15},"end":{"line":18,"column":2}}},"fnMap":{"0":{"name":"App","decl":{"start":{"line":3,"column":24},"end":{"line":3,"column":27}},"loc":{"start":{"line":3,"column":30},"end":{"line":9,"column":1}},"line":3}},"branchMap":{},"s":{"0":0,"1":0},"f":{"0":0},"b":{}}
+}
