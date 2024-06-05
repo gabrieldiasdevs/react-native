@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { Title } from './src/Title'
 
 export default function App() {
   const [counter, setCounter] = useState(0)
 
   return (
     <View style={styles.container}>
+
+      <Title title='Restaurante XXX' />
+
       <Text style={styles.title}>App Contador</Text>
 
       <View style={styles.counterArea}>
