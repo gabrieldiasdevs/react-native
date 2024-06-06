@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { Title } from './src/Title'
+import { Message } from './src/Message'
 
 export default function App() {
   const [counter, setCounter] = useState(0)
@@ -23,6 +24,8 @@ export default function App() {
           <Text>+</Text>
         </TouchableOpacity>
       </View>
+
+      <Message/>
     
     </View>
   )
