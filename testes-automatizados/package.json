@@ -12,6 +12,7 @@
   "dependencies": {
     "@types/react-test-renderer": "^18.3.0",
     "axios": "^1.7.2",
+    "axios-mock-adapter": "^1.22.0",
     "expo": "~51.0.9",
     "expo-status-bar": "~1.12.1",
     "jest": "^29.4.0",
