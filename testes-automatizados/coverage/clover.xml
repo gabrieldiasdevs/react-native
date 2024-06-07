@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1717719102875" clover="3.2.0">
-  <project timestamp="1717719102875" name="All files">
-    <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7" elements="20" coveredelements="20" complexity="0" loc="11" ncloc="11" packages="2" files="3" classes="3"/>
+<coverage generated="1717769653278" clover="3.2.0">
+  <project timestamp="1717769653279" name="All files">
+    <metrics statements="21" coveredstatements="21" conditionals="8" coveredconditionals="8" methods="12" coveredmethods="12" elements="41" coveredelements="41" complexity="0" loc="21" ncloc="21" packages="2" files="4" classes="4"/>
     <package name="testes-automatizados">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="App.tsx" path="C:\Users\gabri\Documents\react-native\testes-automatizados\App.tsx">
@@ -14,7 +14,20 @@
       </file>
     </package>
     <package name="testes-automatizados.src">
-      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+      <metrics statements="16" coveredstatements="16" conditionals="8" coveredconditionals="8" methods="9" coveredmethods="9"/>
+      <file name="Form.tsx" path="C:\Users\gabri\Documents\react-native\testes-automatizados\src\Form.tsx">
+        <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="5"/>
+        <line num="5" count="7" type="stmt"/>
+        <line num="6" count="7" type="stmt"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+      </file>
       <file name="Message.tsx" path="C:\Users\gabri\Documents\react-native\testes-automatizados\src\Message.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
         <line num="5" count="8" type="stmt"/>
