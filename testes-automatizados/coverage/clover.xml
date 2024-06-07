@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1717769653278" clover="3.2.0">
-  <project timestamp="1717769653279" name="All files">
-    <metrics statements="21" coveredstatements="21" conditionals="8" coveredconditionals="8" methods="12" coveredmethods="12" elements="41" coveredelements="41" complexity="0" loc="21" ncloc="21" packages="2" files="4" classes="4"/>
+<coverage generated="1717770754625" clover="3.2.0">
+  <project timestamp="1717770754625" name="All files">
+    <metrics statements="29" coveredstatements="28" conditionals="10" coveredconditionals="9" methods="15" coveredmethods="15" elements="54" coveredelements="52" complexity="0" loc="29" ncloc="29" packages="3" files="6" classes="6"/>
     <package name="testes-automatizados">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="App.tsx" path="C:\Users\gabri\Documents\react-native\testes-automatizados\App.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="7" count="5" type="stmt"/>
         <line num="9" count="5" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
       </file>
     </package>
     <package name="testes-automatizados.src">
-      <metrics statements="16" coveredstatements="16" conditionals="8" coveredconditionals="8" methods="9" coveredmethods="9"/>
+      <metrics statements="23" coveredstatements="22" conditionals="10" coveredconditionals="9" methods="12" coveredmethods="12"/>
       <file name="Form.tsx" path="C:\Users\gabri\Documents\react-native\testes-automatizados\src\Form.tsx">
         <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="5"/>
         <line num="5" count="7" type="stmt"/>
@@ -28,17 +28,34 @@
         <line num="34" count="2" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
       </file>
+      <file name="Game.tsx" path="C:\Users\gabri\Documents\react-native\testes-automatizados\src\Game.tsx">
+        <metrics statements="7" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+      </file>
       <file name="Message.tsx" path="C:\Users\gabri\Documents\react-native\testes-automatizados\src\Message.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-        <line num="5" count="8" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="14" count="8" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
       </file>
       <file name="Title.tsx" path="C:\Users\gabri\Documents\react-native\testes-automatizados\src\Title.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="7" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="testes-automatizados.src.services">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="api.ts" path="C:\Users\gabri\Documents\react-native\testes-automatizados\src\services\api.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
       </file>
     </package>
   </project>

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { Title } from './src/Title'
 import { Message } from './src/Message'
+import { Form } from './src/Form'
+import { Game } from './src/Game'
 
 export default function App() {
   const [counter, setCounter] = useState(0)
@@ -25,7 +27,10 @@ export default function App() {
         </TouchableOpacity>
       </View>
 
-      <Message/>
+      {/* <Message/>
+      <Form/> */}
+
+      <Game/>
     
     </View>
   )
