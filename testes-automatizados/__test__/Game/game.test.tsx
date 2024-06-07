@@ -24,4 +24,14 @@ describe('Game Component Tests', () => {
     })
   })
 
+  it('should display an error message when the api call fails', async () => {
+    mock.onGet('/next-api/?api=game&id=15').networkError()
+
+    const { findByText } = render(<Game/>)
+
+    const erroMessage = await findByText('Erro ao buscar dados')
+
+    expect(erroMessage).toBeTruthy()
+  })
+
 })
