@@ -22,7 +22,7 @@ export function Game(){
           title: response.data.title,
           image_url: response.data.image_url
         })
-      }catch{
+      }catch(err){
         setErrorMsg('Erro ao buscar dados')
       }
 
@@ -40,7 +40,7 @@ export function Game(){
         title: response.data.title,
         image_url: response.data.image_url
       })
-    }catch{
+    }catch(err){
       setErrorMsg('Erro ao buscar dados')
     }
   }
