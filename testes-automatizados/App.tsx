@@ -4,6 +4,7 @@ import { Title } from './src/Title'
 import { Message } from './src/Message'
 import { Form } from './src/Form'
 import { Game } from './src/Game'
+import { Welcome } from './src/Welcome'
 
 export default function App() {
   const [counter, setCounter] = useState(0)
@@ -28,9 +29,10 @@ export default function App() {
       </View>
 
       {/* <Message/>
-      <Form/> */}
+      <Form/>
+      <Game/> */}
 
-      <Game/>
+      <Welcome handleGetUser={ () => console.log("CLICOUU") } />
     
     </View>
   )
