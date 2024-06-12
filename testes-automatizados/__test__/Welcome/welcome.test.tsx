@@ -19,4 +19,8 @@ describe('Welcome Component Tests', () => {
     expect(handleGetUserMock).toHaveBeenCalled()
   })
 
+  it('should not display welcome message when input is empty and login button is pressed', () => {
+    
+  })
+
 })
