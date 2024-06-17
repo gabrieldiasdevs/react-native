@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { Home } from './src/Home'
-import { Profile } from './src/Profile' 
+import { Home } from './src/home'
+import { Profile } from './src/profile' 
 
 export type StackParamList = {
   Home: undefined
