@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react-native'
+import { render, fireEvent, waitFor } from '@testing-library/react-native'
 import { Home } from '../../src/home'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -12,6 +12,17 @@ describe("Test component Home", () => {
     expect(getByText("Página Home")).toBeTruthy();
   })
 
-  it('should navigaa')
+  it('should navigates to Profile screen when button is pressed', async () => {
+    const { getByText } = render(<Home/>)
+
+    const button = getByText('Perfil')
+    fireEvent.press(button)
+
+    const { navigate } = useNavigation<NativeStackNavigationProp<StackParamList>>()
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('Profile')
+    })
+  })
 
 }) 
