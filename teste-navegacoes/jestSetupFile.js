@@ -9,7 +9,10 @@ jest.mock('@react-navigation/native', () => {
       navigate: mockNavigate,
       goBack: mockGoBack
     }),
-    NavigationContainer: ({ children }) => <>{children}</>
+    NavigationContainer: ({ children }) => <>{children}</>,
+    useRoute: () => ({
+      params: { name: 'Gabriel Dias' }
+    })
   }
 })
 
