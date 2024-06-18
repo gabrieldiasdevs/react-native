@@ -10,6 +10,10 @@ beforeEach(() => {
 
 describe("Test component Home", () => {
 
+  afterEach(() => {
+    (global as any).mockedRouteName = 'User'
+  })
+
   it("should render text at home component", () => {
     const { getByText } = render(<Home/>)
     expect(getByText("Página Home")).toBeTruthy();
@@ -29,6 +33,7 @@ describe("Test component Home", () => {
   })
 
   it('should navigate to user screen when button is pressed', async () => {
+    (global as any).mockedRouteName = 'User'
     const { getByText } = render(<Home/>)
 
     const button = getByText('User')
@@ -38,6 +43,20 @@ describe("Test component Home", () => {
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('User', { name: 'Gabriel Dias' })
+    })
+  })
+
+  it('should navigate to contato screen when button is pressed', async () => {
+    (global as any).mockedRouteName = 'Contato'
+    const { getByText } = render(<Home/>)
+
+    const button = getByText('Contato')
+    fireEvent.press(button)
+
+    const { navigate } = useNavigation<NativeStackNavigationProp<StackParamList>>()
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('Contato', { telefone: '999599920' })
     })
   })
 

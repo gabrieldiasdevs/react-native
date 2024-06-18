@@ -6,12 +6,16 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Home } from './src/home'
 import { Profile } from './src/profile'
 import { User } from './src/user'
+import { Contato } from './src/contato'
 
 export type StackParamList = {
   Home: undefined
   Profile: undefined
   User: {
     name: string
+  }
+  Contato: {
+    telefone: string
   }
 }
 
@@ -35,6 +39,11 @@ export default function App() {
         <Stack.Screen
           name='User'
           component={User}
+        />
+
+        <Stack.Screen
+          name='Contato'
+          component={Contato}
         />
 
       </Stack.Navigator>
