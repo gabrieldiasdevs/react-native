@@ -4,11 +4,15 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { Home } from './src/home'
-import { Profile } from './src/profile' 
+import { Profile } from './src/profile'
+import { User } from './src/user'
 
 export type StackParamList = {
   Home: undefined
   Profile: undefined
+  User: {
+    name: string
+  }
 }
 
 const Stack = createNativeStackNavigator<StackParamList>()
@@ -26,6 +30,11 @@ export default function App() {
         <Stack.Screen
           name='Profile'
           component={Profile}
+        />
+
+        <Stack.Screen
+          name='User'
+          component={User}
         />
 
       </Stack.Navigator>
