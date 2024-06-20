@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Button } from 'react-native'
 import { useRoute, RouteProp } from '@react-navigation/native'
+import { decrease } from '../../src/utils/math'
 
 type RouteUserParams = {
   user: {
@@ -15,6 +16,7 @@ export function User(){
 
   function handleCalculate(n1: number, n2: number){
     const soma = n1 + n2
+    console.log(soma)
     return soma
   }
 
@@ -22,6 +24,16 @@ export function User(){
     <View style={styles.container}>
       <Text>Página Usuário</Text>
       <Text> {route.params.name} </Text>
+
+      <Button
+        title='Calcular'
+        onPress={ () => handleCalculate(10, 20) }
+      />
+
+      <Button
+        title='Diminuir'
+        onPress={ () => decrease(50, 20) }
+      />
     </View>
   )
 }
