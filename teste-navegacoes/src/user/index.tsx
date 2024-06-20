@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
 import { useRoute, RouteProp } from '@react-navigation/native'
-import { decrease } from '../../src/utils/math'
+import { decrease, increase } from '../../src/utils/math'
 
 type RouteUserParams = {
   user: {
@@ -33,6 +33,11 @@ export function User(){
       <Button
         title='Diminuir'
         onPress={ () => decrease(50, 20) }
+      />
+
+      <Button
+        title='Aumentar'
+        onPress={ () => increase(80, 30) }
       />
     </View>
   )
